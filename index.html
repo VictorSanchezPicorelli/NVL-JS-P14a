@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MANIPULACION DEL DOM</title>
+</head>
+<body>
+	<div id="listado">
+		<h1>Lista de peliculas favoritas</h1>
+	</div>
+	
+	<script>
+
+		//creamos una variable para declarar el objeto que va a contener la lista de todas las peliculas y su genero correspondiente
+		var pelis = [
+		{
+			"Nombre": "El señor de los anillos",
+			"Genero": "Fantasía"
+		},
+		{
+			"Nombre": "Regreso al Futuro",
+			"Genero": "Sci-Fi"
+		},
+		{
+			"Nombre": "Los increibles",
+			"Genero": "Animación"
+		},
+		{
+			"Nombre": "Star Wars (toda la saga)",
+			"Genero": "Sci-Fi"
+		},
+		{
+			"Nombre": "Transformers (toda la saga)",
+			"Genero": "Sci-Fi"
+		},
+		{
+			"Nombre": "The fast & The forious (toda la saga)",
+			"Genero": "Sci-Fi"
+		},
+		{
+			"Nombre": "Leyendas de Pasión",
+			"Genero": "Romance"
+		},
+		{
+			"Nombre": "Seven",
+			"Genero": "Drama"
+		},
+		{
+			"Nombre": "American History X",
+			"Genero": "Drama"
+		},
+		{
+			"Nombre": "Colega donde está mi coche",
+			"Genero": "Comedia"
+		},
+		{
+			"Nombre": "Salvar al Soldado Ryan",
+			"Genero": "Bélica"
+		},
+		{
+			"Nombre": "La vida de Brian",
+			"Genero": "Comedia"
+		},
+		{
+			"Nombre": "Farenheit 9/11",
+			"Genero": "Documental"
+		},
+		{
+			"Nombre": "Atrápalo como puedas",
+			"Genero": "Comedia"
+		},
+		{
+			"Nombre": "Rocky (toda la saga)",
+			"Genero": "Drama"
+		},
+		{
+			"Nombre": "DeadPool",
+			"Genero": "Comedia"
+		},
+		{
+			"Nombre": "12 del patibulo",
+			"Genero": "Drama"
+		},
+		{
+			"Nombre": "Matrix (toda la saga)",
+			"Genero": "Sci-Fi"
+		},
+		{
+			"Nombre": "Forrest Gump",
+			"Genero": "Drama"
+		},
+		{
+			"Nombre": "Joker",
+			"Genero": "Drama"
+		},
+		{
+			"Nombre": "La naranja mecánica",
+			"Genero": "Drama"
+		},
+		{
+			"Nombre": "8  apellidos Vascos",
+			"Genero": "Comedia"
+		},
+		{
+			"Nombre": "Terminator",
+			"Genero": "Sci-Fi"
+		},
+		{
+			"Nombre": "Coco",
+			"Genero": "Animación"
+		},
+		{
+			"Nombre": "Resacón en Las Vegas",
+			"Genero": "Comedia"
+		},
+		{
+			"Nombre": "Supermán",
+			"Genero": "Sci-Fi"
+		},
+		{
+			"Nombre": "Cronicas de Riddick",
+			"Genero": "Sci-Fi"
+		},
+		{
+			"Nombre": "Pearl Harbor",
+			"Genero": "Bélica"
+		},
+		{
+			"Nombre": "Titanic",
+			"Genero": "Drama"
+		},
+		{
+			"Nombre": "Superdetective en Holliwood",
+			"Genero": "Comedia"
+		},
+		{
+			"Nombre": "La La Land",
+			"Genero": "Romance"
+		},
+		{
+			"Nombre": "A dos metros de ti",
+			"Genero": "Romance"
+		},
+		{
+			"Nombre": "Monstruos S.A.",
+			"Genero": "Animación"
+		},
+		{
+			"Nombre": "La princesa Prometida",
+			"Genero": "Drama"
+		},
+		{
+			"Nombre": "El Parino",
+			"Genero": "Drama"
+		},
+		{
+			"Nombre": "Alien",
+			"Genero": "Sci-Fi"
+		}
+		];
+
+		//Declaramos un objeto que contiene los géneros
+		var generos = [
+		{
+			"Nombre": "Drama"
+		},
+		{
+			"Nombre": "Sci-Fi"
+		},
+		{
+			"Nombre": "Bélica"
+		},
+		{
+			"Nombre": "Animación"
+		},
+		{
+			"Nombre": "Romance"
+		},
+		{
+			"Nombre": "Comedia"
+		},
+		{
+			"Nombre": "Documental"
+		},
+		{
+			"Nombre": "Fantasía"
+		}
+		];
+
+		//Obtenemos el div en el que vamos a incluir la lista
+		var listado = document.querySelector('#listado');
+
+		//Cremaos la lista
+		var lista = document.createElement("ul");
+		//Añadimos la lista como elemento hijo del div listado
+		listado.appendChild(lista); 
+
+		//Recorremos el objeto peliculas
+		for (i=0;i<pelis.length;i++){
+			//Creamos cada elemento de la lista
+			var peli = document.createElement("li");
+			//Obtenemos el nombre de la película y lo añadimos como texto
+			peli.textContent=pelis[i].Nombre;
+			//Obtenemos el género de la película y lo añadimos como clase
+			peli.classList.add(pelis[i].Genero);
+			//Añadimos cada elemento dentro de la lista
+			lista.appendChild(peli); 
+		}
+
+		//Recorremos los diferentes generos
+		for (g=0;g<generos.length;g++){
+			//Obtenemos la referencia a todos los elementos que pertenecen al genero correspondiente
+			var gen = document.querySelectorAll('.'+generos[g].Nombre);
+			//Recorremos todos los elementos de dicho genero
+			for (p=0;p<gen.length;p++){
+				//Añadimos el atributo que incluirá el icono correspondiente a cada genero
+				gen[p].style.listStyleImage = "url('images/" +generos[g].Nombre +".png')";
+			}
+		}
+		
+	</script>
+</body>
+</html>
